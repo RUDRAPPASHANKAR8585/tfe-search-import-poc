@@ -1,0 +1,97 @@
+ami_id        = "ami-0d322042300902274"
+instance_type = "t2.micro"
+key_name      = "tfe-tcs-key-pair"
+
+subnet_name          = "YOUR-EXISTING-SUBNET-NAME"
+security_group_name  = "YOUR-EXISTING-SG-NAME"
+
+associate_public_ip_address = false
+private_ip                  = "10.187.89.57"
+
+source_dest_check = true
+
+ipv6_address_count = 0
+ipv6_addresses     = []
+secondary_private_ips = []
+
+availability_zone = "eu-west-1a"
+
+disable_api_stop        = false
+disable_api_termination = false
+ebs_optimized           = false
+force_destroy            = false
+get_password_data       = false
+hibernation             = false
+
+instance_initiated_shutdown_behavior = "stop"
+
+monitoring = false
+
+tenancy = "default"
+
+placement_partition_number = null
+
+user_data                   = null
+user_data_replace_on_change = false
+
+
+# CPU
+cpu_core_count       = 1
+cpu_threads_per_core = 1
+
+
+# CPU Credits
+cpu_credits = "standard"
+
+
+# Capacity Reservation
+capacity_reservation_preference = "open"
+
+
+# Root EBS
+root_delete_on_termination = true
+root_encrypted              = true
+root_iops                   = 3000
+root_kms_key_id             = "YOUR-KMS-KEY-ARN"
+root_volume_size            = 100
+root_volume_type            = "gp3"
+root_throughput             = 125
+
+
+# No additional EBS volumes
+ebs_block_devices = []
+
+
+# Enclave
+enclave_enabled = false
+
+
+# Maintenance
+auto_recovery = "default"
+
+
+# Metadata
+metadata_http_endpoint               = "enabled"
+metadata_http_protocol_ipv6          = "disabled"
+metadata_http_put_response_hop_limit = 1
+metadata_http_tokens                 = "required"
+instance_metadata_tags               = "disabled"
+
+
+# Private DNS
+enable_resource_name_dns_a_record    = false
+enable_resource_name_dns_aaaa_record = false
+hostname_type                        = "ip-name"
+
+
+# Instance Tags
+tags = {
+  CharityID      = "054239"
+  Environment    = "DEV"
+  IESEnvironment = "DEV"
+  IESName        = "GLGBLN-10-187-89-57"
+  Name           = "Agentpool_test_instance_1"
+  SupportScope   = "TIS"
+}
+
+volume_tags = {}
