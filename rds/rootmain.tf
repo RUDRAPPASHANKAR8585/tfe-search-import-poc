@@ -1,123 +1,154 @@
 module "rds" {
   source = "./rds"
 
-  cluster_identifier = var.rds_cluster_identifier
+  allocated_storage = var.rds_allocated_storage
 
-  engine         = var.rds_engine
-  engine_version = var.rds_engine_version
-  engine_mode    = var.rds_engine_mode
-
-  database_name = var.rds_database_name
+  allow_major_version_upgrade = var.rds_allow_major_version_upgrade
 
   availability_zones = var.rds_availability_zones
 
-  db_subnet_group_name =
-    var.rds_db_subnet_group_name
+  backtrack_window = var.rds_backtrack_window
 
-  db_cluster_parameter_group_name =
-    var.rds_db_cluster_parameter_group_name
+  backup_retention_period = var.rds_backup_retention_period
 
-  db_parameter_group_name =
-    var.rds_db_parameter_group_name
+  cluster_identifier = var.rds_cluster_identifier
 
-  backup_retention_period =
-    var.rds_backup_retention_period
+  copy_tags_to_snapshot = var.rds_copy_tags_to_snapshot
 
-  backtrack_window =
-    var.rds_backtrack_window
+  database_insights_mode = var.rds_database_insights_mode
 
-  copy_tags_to_snapshot =
-    var.rds_copy_tags_to_snapshot
+  database_name = var.rds_database_name
 
-  delete_automated_backups =
-    var.rds_delete_automated_backups
+  db_cluster_instance_class = var.rds_db_cluster_instance_class
 
-  deletion_protection =
-    var.rds_deletion_protection
+  db_cluster_parameter_group_name = var.rds_db_cluster_parameter_group_name
 
-  enable_global_write_forwarding =
-    var.rds_enable_global_write_forwarding
+  db_instance_parameter_group_name = var.rds_db_instance_parameter_group_name
 
-  enable_http_endpoint =
-    var.rds_enable_http_endpoint
+  db_subnet_group_name = var.rds_db_subnet_group_name
 
-  enable_local_write_forwarding =
-    var.rds_enable_local_write_forwarding
+  delete_automated_backups = var.rds_delete_automated_backups
 
-  enabled_cloudwatch_logs_exports =
-    var.rds_enabled_cloudwatch_logs_exports
+  deletion_protection = var.rds_deletion_protection
 
-  iam_database_authentication_enabled =
-    var.rds_iam_database_authentication_enabled
+  domain = var.rds_domain
 
-  kms_key_id =
-    var.rds_kms_key_id
+  domain_iam_role_name = var.rds_domain_iam_role_name
 
-  master_username =
-    var.rds_master_username
+  enable_global_write_forwarding = var.rds_enable_global_write_forwarding
 
-  port =
-    var.rds_port
+  enable_http_endpoint = var.rds_enable_http_endpoint
 
-  preferred_backup_window =
-    var.rds_preferred_backup_window
+  enable_local_write_forwarding = var.rds_enable_local_write_forwarding
 
-  preferred_maintenance_window =
-    var.rds_preferred_maintenance_window
+  enabled_cloudwatch_logs_exports = var.rds_enabled_cloudwatch_logs_exports
 
-  skip_final_snapshot =
-    var.rds_skip_final_snapshot
+  engine = var.rds_engine
 
-  storage_encrypted =
-    var.rds_storage_encrypted
+  engine_lifecycle_support = var.rds_engine_lifecycle_support
 
-  vpc_security_group_ids =
-    var.rds_vpc_security_group_ids
+  engine_mode = var.rds_engine_mode
 
-  instance_identifier =
-    var.rds_instance_identifier
+  engine_version = var.rds_engine_version
 
-  instance_class =
-    var.rds_instance_class
+  final_snapshot_identifier = var.rds_final_snapshot_identifier
 
-  instance_availability_zone =
-    var.rds_instance_availability_zone
+  global_cluster_identifier = var.rds_global_cluster_identifier
 
-  auto_minor_version_upgrade =
-    var.rds_auto_minor_version_upgrade
+  iam_database_authentication_enabled = var.rds_iam_database_authentication_enabled
 
-  ca_cert_identifier =
-    var.rds_ca_cert_identifier
+  iam_roles = var.rds_iam_roles
 
-  instance_copy_tags_to_snapshot =
-    var.rds_instance_copy_tags_to_snapshot
+  iops = var.rds_iops
 
-  force_destroy =
-    var.rds_force_destroy
+  kms_key_id = var.rds_kms_key_id
 
-  monitoring_interval =
-    var.rds_monitoring_interval
+  manage_master_user_password = var.rds_manage_master_user_password
 
-  performance_insights_enabled =
-    var.rds_performance_insights_enabled
+  master_password = var.rds_master_password
 
-  performance_insights_kms_key_id =
-    var.rds_performance_insights_kms_key_id
+  master_password_wo = var.rds_master_password_wo
 
-  performance_insights_retention_period =
-    var.rds_performance_insights_retention_period
+  master_password_wo_version = var.rds_master_password_wo_version
 
-  instance_preferred_backup_window =
-    var.rds_instance_preferred_backup_window
+  master_username = var.rds_master_username
 
-  instance_preferred_maintenance_window =
-    var.rds_instance_preferred_maintenance_window
+  monitoring_interval = var.rds_monitoring_interval
 
-  promotion_tier =
-    var.rds_promotion_tier
+  network_type = var.rds_network_type
 
-  publicly_accessible =
-    var.rds_publicly_accessible
+  performance_insights_enabled = var.rds_performance_insights_enabled
+
+  performance_insights_kms_key_id = var.rds_performance_insights_kms_key_id
+
+  performance_insights_retention_period = var.rds_performance_insights_retention_period
+
+  port = var.rds_port
+
+  preferred_backup_window = var.rds_preferred_backup_window
+
+  preferred_maintenance_window = var.rds_preferred_maintenance_window
+
+  region = var.rds_region
+
+  replication_source_identifier = var.rds_replication_source_identifier
+
+  skip_final_snapshot = var.rds_skip_final_snapshot
+
+  snapshot_identifier = var.rds_snapshot_identifier
+
+  source_region = var.rds_source_region
+
+  storage_encrypted = var.rds_storage_encrypted
 
   tags = var.rds_tags
+
+  vpc_security_group_ids = var.rds_vpc_security_group_ids
+
+
+  # RDS cluster instance
+
+  instance_auto_minor_version_upgrade = var.rds_instance_auto_minor_version_upgrade
+
+  instance_availability_zone = var.rds_instance_availability_zone
+
+  instance_ca_cert_identifier = var.rds_instance_ca_cert_identifier
+
+  instance_copy_tags_to_snapshot = var.rds_instance_copy_tags_to_snapshot
+
+  custom_iam_instance_profile = var.rds_custom_iam_instance_profile
+
+  instance_db_parameter_group_name = var.rds_instance_db_parameter_group_name
+
+  instance_db_subnet_group_name = var.rds_instance_db_subnet_group_name
+
+  instance_engine = var.rds_instance_engine
+
+  instance_engine_version = var.rds_instance_engine_version
+
+  force_destroy = var.rds_force_destroy
+
+  instance_identifier = var.rds_instance_identifier
+
+  instance_class = var.rds_instance_class
+
+  instance_monitoring_interval = var.rds_instance_monitoring_interval
+
+  monitoring_role_arn = var.rds_monitoring_role_arn
+
+  instance_performance_insights_enabled = var.rds_instance_performance_insights_enabled
+
+  instance_performance_insights_kms_key_id = var.rds_instance_performance_insights_kms_key_id
+
+  instance_performance_insights_retention_period = var.rds_instance_performance_insights_retention_period
+
+  instance_preferred_backup_window = var.rds_instance_preferred_backup_window
+
+  instance_preferred_maintenance_window = var.rds_instance_preferred_maintenance_window
+
+  promotion_tier = var.rds_promotion_tier
+
+  publicly_accessible = var.rds_publicly_accessible
+
+  instance_tags = var.rds_instance_tags
 }
