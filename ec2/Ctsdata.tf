@@ -97,3 +97,41 @@ data "aws_subnet" "selected" {
     values = [data.aws_vpc.selected.id]
   }
 }
+
+
+
+
+
+
+variable "security_group_type" {
+  description = "Security group type/code used in the naming convention, for example LXGL."
+  type        = string
+  default     = "LXGL"
+}
+
+variable "security_group_number" {
+  description = "Security group sequence number used in the naming convention."
+  type        = string
+  default     = "001"
+}
+
+
+
+# ------------------------------------------------------------
+# Existing Security Group
+# ------------------------------------------------------------
+
+data "aws_security_group" "selected" {
+  filter {
+    name = "group-name"
+
+    values = [
+      "${var.region_name}${var.security_group_type}${var.security_group_number}"
+    ]
+  }
+
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.selected.id]
+  }
+}
