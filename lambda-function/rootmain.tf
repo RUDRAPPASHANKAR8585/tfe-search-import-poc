@@ -60,3 +60,59 @@ resource "aws_lambda_function" "this" {
 
   tags = var.tags
 }
+
+
+module "lambda" {
+
+  source = "./lambda"
+
+  function_name = "TFE_Log_Forwarder"
+
+  description = "Demonstrates logging from AWS Lambda code to Splunk's HTTP event collector"
+
+  runtime = "nodejs18.x"
+
+  handler = "index.handler"
+
+  role = "arn:aws:iam::499998932841:role/RRDRAR27_AWS_APP01_TFE_Lambda"
+
+  filename = "${path.root}/lambda-code/tfe-log-forwarder.zip"
+
+  memory_size = 512
+
+  timeout = 10
+
+  reserved_concurrent_executions = 100
+
+  publish = false
+
+  architectures = ["x86_64"]
+
+  environment_variables = {
+    HTTPS_PROXY = "http://proxy-euie.aws.novartis.net:3128"
+    HTTP_PROXY  = "http://proxy-euie.aws.novartis.net:3128"
+    http_proxy  = "http://proxy-euie.aws.novartis.net:3128"
+    https_proxy = "http://proxy-euie.aws.novartis.net:3128"
+  }
+
+  ephemeral_storage_size = 512
+
+  log_format = "Text"
+
+  log_group = "/aws/lambda/TFE_Log_Forwarder"
+
+  tracing_mode = "PassThrough"
+
+  subnet_ids = [
+    "subnet-0b99ad1ab65ef1e6c",
+    "subnet-0d373658a72ef65eb"
+  ]
+
+  security_group_ids = [
+    "sg-0f0444ffa9aff4e6c"
+  ]
+
+  tags = {
+    "lambda-console:blueprint" = "splunk-logging"
+  }
+}
